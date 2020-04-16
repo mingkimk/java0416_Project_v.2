@@ -41,7 +41,7 @@ public class MemberDAO {
 	private boolean connect() {
 		boolean result = false;
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oror", "system", "11111111");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "11111111");
 			result = true;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -49,36 +49,79 @@ public class MemberDAO {
 		}
 		return result;
 	}
-
-	public boolean InsertMember(MemberDTO m) {
-		boolean result = false;
-		if (connect()) {
-			try {
-				String sql = "insert into member values(?,?,?,?,?,1)";
-				PreparedStatement psmt = conn.prepareStatement(sql);
-				psmt.setString(1, m.getId());
-				psmt.setString(2, m.getName());
-				psmt.setString(3, m.getPwd());
-				psmt.setString(4, m.getAdr());
-				psmt.setString(5, m.getCell());
-				int r = psmt.executeUpdate();
-
-				if (r > 0) {
-					result = true;
-				}
-				psmt.close();
-
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	
+	
+		public boolean Insert(Object oj) {
+			boolean result = false;
+			String[] check = (String[]) oj;
+			d = new MemberDTO();
+			for (int i = 0; i < check.length; i++) {
+				d.setId(check[0]);
+				d.setName(check[1]);
+				d.setPwd(check[2]);
+				d.setAdr(check[3]);
+				d.setCell(check[4]);
 			}
-		} else {
-			System.out.println("DB연결 실패");
-			System.exit(0);
-		}
+			if (this.connect()) {
+				try {
+					String sql = "insert into member values(?,?,?,?,?,1)";
+					PreparedStatement psmt = conn.prepareStatement(sql);
+					psmt.setString(1, d.getId());
+					psmt.setString(2, d.getName());
+					psmt.setString(3, d.getPwd());
+					psmt.setString(4, d.getAdr());
+					psmt.setString(5, d.getCell());
+					int r = psmt.executeUpdate();
 
-		return result;
-	}
+					if (r > 0) {
+						result = true;
+					}
+					psmt.close();
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				System.out.println("DB연결 실패");
+				System.exit(0);
+			}
+
+			return result;
+		}
+		
+	
+	
+
+//	public boolean InsertMember(MemberDTO m) {
+//		boolean result = false;
+//		if (connect()) {
+//			try {
+//				String sql = "insert into member values(?,?,?,?,?,1)";
+//				PreparedStatement psmt = conn.prepareStatement(sql);
+//				psmt.setString(1, m.getId());
+//				psmt.setString(2, m.getName());
+//				psmt.setString(3, m.getPwd());
+//				psmt.setString(4, m.getAdr());
+//				psmt.setString(5, m.getCell());
+//				int r = psmt.executeUpdate();
+//
+//				if (r > 0) {
+//					result = true;
+//				}
+//				psmt.close();
+//
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		} else {
+//			System.out.println("DB연결 실패");
+//			System.exit(0);
+//		}
+//
+//		return result;
+//	}
 
 	public Boolean idchk(MemberDTO member) throws Exception {
 		boolean result = false;

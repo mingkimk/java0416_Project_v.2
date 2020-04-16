@@ -1,6 +1,7 @@
 package Server;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import DB.DAOCenter;
 
@@ -13,11 +14,11 @@ public class ServerCenter {
 		this.sList.add(s);
 	}
 
-	public void select(Object objectMember,String mm) {
+	public void select(Object objectMember) {
 
 		System.out.println("서버센터"+objectMember);
-		dc.whichone(objectMember, mm);
-
+//		dc.whichone(objectMember);
+//
 //		check = (String[]) objectMember;
 //		for (int i = 0; i < check.length; i++) {
 //			if (check[check.length - 1].equals("login")) { // 로그인 체크
@@ -32,13 +33,15 @@ public class ServerCenter {
 //				System.out.println(check[i]);
 //				System.out.println("이건중복체크지롱  : " + check[check.length - 1]);
 //			}
-			//dc = new DAOCenter();
-			//dc.Select(check);
-
+		dc = new DAOCenter();
+		dc.whichone(objectMember);
+		System.out.println("DAO센터로");
+//
 //		}
-	//	String m = "member";
-		// System.out.println(objectMember);
+//		String m = "member";
+//		 System.out.println(objectMember);
 
+//		dc.whichone(objectMember, m);
 
 //			      Object Object_Array[] = new Object[100];
 //
@@ -47,7 +50,7 @@ public class ServerCenter {
 //			         String_Array[i] = Object_Array[i].toString();
 //			         System.out.println(String_Array[i]);
 //			      }
-//			   }
+			   }
 	}
 
-}
+

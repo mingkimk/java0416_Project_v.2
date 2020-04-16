@@ -61,7 +61,8 @@ public class ServerChat extends Thread {
 							String txt = "정상접속 되었습니다.";
 							sendMsg = withClient.getOutputStream();
 							sendMsg.write(txt.getBytes());
-							sc.select(check,msg);
+							System.out.println("받다");
+							sc.select(check);
 						}
 
 

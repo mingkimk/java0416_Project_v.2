@@ -228,9 +228,9 @@ public class Signup extends JFrame {
 
 				try {
 					String[] check = {tfUsername.getText()};
-					String mm ="check";
+					//String mm ="check";
 					
-					ch.streamSet(check,mm);
+					ch.streamSet(check);
 					
 					// MemberDAO dao = MemberDAO.getInstance();
 					// Boolean result = dao.idchk(member);
@@ -272,10 +272,10 @@ public class Signup extends JFrame {
 						tfName.getText(),
 						tfpwd.getText(), 
 						tfAddress.getText(),
-						tfPhone.getText()
-						};
-				String mm ="join";
-				ch.streamSet(check,mm);
+						tfPhone.getText(),
+						"join"};
+				
+				ch.streamSet(check);
 
 //				if (result) {
 //					JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.");

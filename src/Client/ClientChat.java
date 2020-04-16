@@ -12,13 +12,13 @@ public class ClientChat {
 	private InputStream reMsg = null;
 	private OutputStream sendMsg = null;
 	private String[] chk = null;
-	String nnn = "";
+	String mm = "";
 	Scanner in = new Scanner(System.in);
 
 	ClientChat(Socket withServer) {
 		this.withServer = withServer;
 		start();
-		streamSet(chk,nnn);
+		streamSet(chk);
 		// new Login();
 		// send();
 	}
@@ -28,15 +28,15 @@ public class ClientChat {
 
 	}
 
-	public void send() {
+//	public void send() {
 //		new Thread(new Runnable() {
 //			@Override
 //			public void run() {
-		try {
-			// Login lg = new Login();
-			System.out.println("send start~~");
+//		try {
+//			// Login lg = new Login();
+//			System.out.println("send start~~");
 
-			while (true) {
+//			while (true) {
 //						//FileOutputStream fos = new FileOutputStream(USERINFO_SER);
 //						BufferedOutputStream bos = new BufferedOutputStream();
 //						ObjectOutputStream out = new ObjectOutputStream(bos);
@@ -57,31 +57,31 @@ public class ClientChat {
 //						oos.writeObject(check);
 //						byte[] bowl = baos.toByteArray();
 				// op = sc.getOutputStream();
-//						op.write(bowl);
-
-//						sendMsg = withServer.getOutputStream();
-//						sendMsg.write(bowl);
-//						sendMsg.write(pwd.getBytes());
-			}
-		} catch (Exception e) {
-			System.out.println("client send end !!!");
-			return;
-		}
+//				op.write(bowl);
+//
+//				sendMsg = withServer.getOutputStream();
+//				sendMsg.write(bowl);
+//				sendMsg.write(pwd.getBytes());
 //			}
-//		}).start();
-	}
+//		} catch (Exception e) {
+//			System.out.println("client send end !!!");
+//			return;
+//		}
+//	}
 
-	public void streamSet(String[] check, String mm) {
+//	}).start();}
+
+//}
+
+	public void streamSet(String[] check) {
+//		new Thread(new Runnable() {
+//			@Override
+//			public void run() {
 		try {
 			if (check != null) {
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				ObjectOutputStream oos = new ObjectOutputStream(baos);
 				oos.writeObject(check);
-				mm=String.valueOf(mm);
-				if(mm.equals("join")) {
-					System.out.println("회원가입할거다");
-				}
-
 
 				byte[] bowl = baos.toByteArray();
 
@@ -106,3 +106,9 @@ public class ClientChat {
 	}
 
 }
+			
+		
+//	}
+//}).start();
+
+		

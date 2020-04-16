@@ -36,7 +36,7 @@ public class MemberDAO {
 	private boolean connect() {
 		boolean result = false;
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oror", "system", "11111111");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "11111111");
 			result = true;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -44,8 +44,9 @@ public class MemberDAO {
 		}
 		return result;
 	}
-
-	public boolean InsertMember(Object oj) {
+	
+	
+	public boolean Insert(Object oj) {
 		boolean result = false;
 		String[] check = (String[]) oj;
 		member = new MemberDTO();
@@ -56,7 +57,7 @@ public class MemberDAO {
 			member.setAdr(check[3]);
 			member.setCell(check[4]);
 		}
-		if (connect()) {
+		if (this.connect()) {
 			try {
 				String sql = "insert into member values(?,?,?,?,?,1)";
 				PreparedStatement psmt = conn.prepareStatement(sql);
@@ -84,3 +85,43 @@ public class MemberDAO {
 		return result;
 	}
 }
+	
+
+//	public boolean InsertMember(Object oj) {
+//		boolean result = false;
+//		String[] check = (String[]) oj;
+//		member = new MemberDTO();
+//		for (int i = 0; i < check.length; i++) {
+//			member.setId(check[0]);
+//			member.setName(check[1]);
+//			member.setPwd(check[2]);
+//			member.setAdr(check[3]);
+//			member.setCell(check[4]);
+//		}
+//		if (connect()) {
+//			try {
+//				String sql = "insert into member values(?,?,?,?,?,1)";
+//				PreparedStatement psmt = conn.prepareStatement(sql);
+//				psmt.setString(1, member.getId());
+//				psmt.setString(2, member.getName());
+//				psmt.setString(3, member.getPwd());
+//				psmt.setString(4, member.getAdr());
+//				psmt.setString(5, member.getCell());
+//				int r = psmt.executeUpdate();
+//
+//				if (r > 0) {
+//					result = true;
+//				}
+//				psmt.close();
+//
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		} else {
+//			System.out.println("DB연결 실패");
+//			System.exit(0);
+//		}
+//
+//		return result;
+//	}

@@ -85,8 +85,8 @@ public class Login extends JFrame implements ActionListener, Serializable {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String[] check = { idField.getText(), pwdField.getText()};
-					String mm ="login";
-					client.streamSet(check, mm);
+			
+					client.streamSet(check);
 
 				} catch (Exception e1) {
 					e1.printStackTrace();
