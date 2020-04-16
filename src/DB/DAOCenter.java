@@ -50,6 +50,13 @@ public class DAOCenter implements DAOInterface {
 	}
 
 	public void whichone(Object objectMember, String m) {
+		System.out.println(" daocenter");
+		String mm = String.valueOf(m);
+		if (mm.equals("join")) {
+			MemberDAO dao = MemberDAO.getInstance();
+			dao.InsertMember(objectMember);
+			System.out.println("");
+		}
 
 		
 		switch (m) {

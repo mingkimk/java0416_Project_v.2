@@ -77,7 +77,11 @@ public class ClientChat {
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				ObjectOutputStream oos = new ObjectOutputStream(baos);
 				oos.writeObject(check);
-				
+				mm=String.valueOf(mm);
+				if(mm.equals("join")) {
+					System.out.println("회원가입할거다");
+				}
+
 
 				byte[] bowl = baos.toByteArray();
 
